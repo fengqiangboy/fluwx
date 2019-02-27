@@ -25,6 +25,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.PluginRegistry
 import kotlinx.coroutines.*
+import kotlinx.coroutines.experimental.*
 
 
 /***
@@ -116,7 +117,7 @@ internal class FluwxShareHandler {
             if (thumbnail.isNullOrBlank()) {
                 msg.thumbData = null
             } else {
-                msg.thumbData = getThumbnailByteArrayMiniProgram(registrar, thumbnail)
+                msg.thumbData = getThumbnailByteArrayMiniProgram(registrar, thumbnail!!)
             }
             val req = SendMessageToWX.Req()
             setCommonArguments(call, req, msg)
